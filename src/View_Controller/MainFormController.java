@@ -11,7 +11,7 @@ import javax.swing.text.TableView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class MainFormController implements Initializable {
     public TableColumn idCol;
     public TableColumn nameCol;
     public TableView dataTable;

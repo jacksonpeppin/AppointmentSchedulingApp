@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="252.0" prefWidth="314.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.LoginController">
+<AnchorPane prefHeight="252.0" prefWidth="314.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.LoginController">
    <children>
       <GridPane layoutX="43.0" layoutY="81.0" prefHeight="90.0" prefWidth="228.0">
         <columnConstraints>
@@ -23,11 +24,15 @@
         </rowConstraints>
          <children>
             <TextField fx:id="usernameTextField" GridPane.columnIndex="1" />
-            <TextField fx:id="passwordTextField" prefWidth="176.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="usernameLabel" text="Username:" />
             <Label fx:id="passwordLabel" text="Password:" GridPane.rowIndex="1" />
             <Label fx:id="locationLabel" text="Location:" GridPane.rowIndex="2" />
             <Label fx:id="userLocationLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <PasswordField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </PasswordField>
          </children>
       </GridPane>
       <Label fx:id="titleLabel" layoutX="14.0" layoutY="14.0" text="Scheduling Application">
@@ -35,6 +40,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="loginButton" layoutX="134.0" layoutY="197.0" mnemonicParsing="false" onAction="#loginButtonPushed" text="Login" textAlignment="CENTER" />
+      <Button fx:id="loginButton" layoutX="136.0" layoutY="178.0" mnemonicParsing="false" onAction="#loginButtonPushed" text="Login" textAlignment="CENTER" />
+      <Label fx:id="invalidLoginLabel" alignment="CENTER" layoutX="4.0" layoutY="214.0" prefHeight="17.0" prefWidth="306.0" textAlignment="CENTER" textFill="RED" />
    </children>
 </AnchorPane>
