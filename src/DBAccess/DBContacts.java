@@ -1,7 +1,6 @@
 package DBAccess;
 
 import Model.Contact;
-import Model.Country;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import utils.DBConnection;
@@ -9,10 +8,16 @@ import utils.DBConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 
+/**
+ * this class allows the user to interact with the contacts table
+ */
 public class DBContacts {
 
+    /**
+     * returns an observable list of every contact in the contacts table with SQL
+     * @return observable list of all contacts
+     */
     public static ObservableList<Contact> getAllContacts()
     {
         ObservableList<Contact> clist = FXCollections.observableArrayList();
@@ -38,24 +43,33 @@ public class DBContacts {
         }
     }
 
-    public static void checkDateConversion()
+    /**
+     * allows the user to retrieve a single contact from the contacts table
+     * @param contactID
+     * @return
+     */
+    public static Contact getContact(int contactID)
     {
-        System.out.println("CREATE DATE TEST");
-        String sql = "select Create_Date from countries";
+        Contact contact = new Contact(0, "", "");
         try
         {
+            String sql ="SELECT * FROM contacts WHERE Contact_ID = " + contactID;
             PreparedStatement ps = DBConnection.getConnection().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next())
             {
-                Timestamp ts = rs.getTimestamp("Create_Date");
-                System.out.println("CD: " + ts.toLocalDateTime().toString());
+                String contactName = rs.getString("Contact_Name");
+                String contactEmail = rs.getString("Email");
+                contact.setContactID(contactID);
+                contact.setContactName(contactName);
+                contact.setContactEmail(contactEmail);
             }
-
         }
         catch (SQLException throwables)
         {
             throwables.printStackTrace();
         }
+        return contact;
     }
+
 }

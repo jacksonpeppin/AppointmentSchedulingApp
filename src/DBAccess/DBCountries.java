@@ -8,11 +8,16 @@ import utils.DBConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 
+/**
+ * This class allows the user to retrieve information from the countries table with SQL
+ */
 public class DBCountries {
 
-
+    /**
+     * This class returns an observablelist of every country in the countries table with SQL
+     * @return observablelist of all countries
+     */
     public static ObservableList<Country> getAllCountries()
     {
         ObservableList<Country> clist = FXCollections.observableArrayList();
@@ -40,25 +45,33 @@ public class DBCountries {
         return clist;
     }
 
-    public static void checkDateConversion()
-    {
-        System.out.println("CREATE DATE TEST");
-        String sql = "select Create_Date from countries";
-        try
-        {
+    /**
+     * Return a single country object from the countries table with SQL
+     * @param countryID
+     * @return Country
+     */
+    public static Country getCountry(int countryID) {
+
+        try {
+
+
+            String sql = "SELECT * FROM countries WHERE Country_ID = " + countryID;
+            String countryName = "";
             PreparedStatement ps = DBConnection.getConnection().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while (rs.next())
-            {
-                Timestamp ts = rs.getTimestamp("Create_Date");
-                System.out.println("CD: " + ts.toLocalDateTime().toString());
-            }
 
+            if (rs.next()) {
+                countryName = rs.getString("Country");
+            }
+            Country c = new Country(countryID, countryName);
+            return c;
         }
         catch (SQLException throwables)
         {
             throwables.printStackTrace();
         }
+        return null;
     }
+
 
 }

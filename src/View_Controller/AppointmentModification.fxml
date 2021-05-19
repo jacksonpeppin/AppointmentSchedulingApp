@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.AppointmentModificationController">
+   <children>
+      <HBox layoutX="25.0" layoutY="131.0" prefHeight="26.0" prefWidth="570.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" />
+         </padding>
+         <children>
+            <Label alignment="CENTER" text="Appointment ID:" textAlignment="CENTER" />
+            <TextField fx:id="appointmentIDTextField" alignment="CENTER" editable="false" opacity="0.5" prefHeight="25.0" prefWidth="53.0">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </TextField>
+            <Label alignment="CENTER" text="Customer ID:" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="customerIDTextField" alignment="CENTER" prefHeight="25.0" prefWidth="53.0">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></TextField>
+            <Label alignment="CENTER" text="User ID:" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="userIDTextField" alignment="CENTER" prefHeight="25.0" prefWidth="53.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="25.0" layoutY="166.0" prefHeight="26.0" prefWidth="570.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" />
+         </padding>
+         <children>
+            <Label alignment="CENTER" text="Title:" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="titleTextField" alignment="CENTER" prefHeight="25.0" prefWidth="53.0">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></TextField>
+            <Label alignment="CENTER" text="Description:" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="descriptionTextField" alignment="CENTER" prefHeight="25.0" prefWidth="53.0">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </TextField>
+            <Label alignment="CENTER" text="Location:" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="locationTextField" alignment="CENTER" prefHeight="25.0" prefWidth="53.0">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></TextField>
+            <Label alignment="CENTER" text="Type:" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="typeTextField" alignment="CENTER" prefHeight="25.0" prefWidth="53.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="25.0" layoutY="279.0" prefHeight="26.0" prefWidth="570.0">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+         <children>
+            <Label alignment="CENTER" text="Contact Name:" textAlignment="CENTER" />
+            <ComboBox fx:id="contactComboBox" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <Label fx:id="titleLabel" layoutX="24.0" layoutY="24.0" text="Label">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" layoutX="25.0" layoutY="333.0" prefHeight="26.0" prefWidth="570.0">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+         <children>
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonPressed" text="Save">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonPressed" text="Exit">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <HBox layoutX="25.0" layoutY="196.0" prefHeight="26.0" prefWidth="570.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" />
+         </padding>
+         <children>
+            <Label alignment="CENTER" text="Start:" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Label>
+            <DatePicker fx:id="startDatePicker">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></DatePicker>
+            <Label alignment="CENTER" text="Time:" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Label>
+            <ComboBox fx:id="startTimeComboBox" prefHeight="25.0" prefWidth="72.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="25.0" layoutY="231.0" prefHeight="26.0" prefWidth="570.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" />
+         </padding>
+         <children>
+            <Label alignment="CENTER" text="End:" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Label>
+            <DatePicker fx:id="endDatePicker">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></DatePicker>
+            <Label alignment="CENTER" text="Time:" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Label>
+            <ComboBox fx:id="endTimeComboBox" prefHeight="25.0" prefWidth="72.0" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

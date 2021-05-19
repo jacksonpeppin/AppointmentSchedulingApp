@@ -1,6 +1,5 @@
 package DBAccess;
 
-import Model.Country;
 import Model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,8 +9,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+/**
+ * This class allows the user to retrieve information from the users table with SQL
+ */
 public class DBUsers {
 
+    /**
+     * retrieve an observablelist of every User from the users table
+     * @return ObservableList<User>
+     */
     public static ObservableList<User> getAllUsers()
     {
         ObservableList<User> userList = FXCollections.observableArrayList();

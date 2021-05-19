@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * this class establishes a connection with the database
+ */
 public class DBConnection {
 
     // JDBC URL parts
@@ -43,11 +46,18 @@ public class DBConnection {
         return conn;
     }
 
+    /**
+     * get connection with the database
+     * @return
+     */
     public static Connection getConnection()
     {
         return conn;
     }
 
+    /**
+     * end connection with the database
+     */
     public static void closeConnection()
     {
         try

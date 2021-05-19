@@ -1,6 +1,5 @@
 package View_Controller;
 
-import DBAccess.DBAppointments;
 import DBAccess.DBUsers;
 import Model.User;
 import javafx.collections.ObservableList;
@@ -15,19 +14,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
-import javax.swing.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.time.ZoneId;
 import java.time.format.TextStyle;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 
-
+/**
+ * allows the user to access the application if a valid username and password are provided
+ */
 public class LoginController implements Initializable {
     @FXML
     private TextField usernameTextField;
@@ -59,7 +61,14 @@ public class LoginController implements Initializable {
     private String userLanguage;
     private ZoneId userZoneID;
 
+    private static User user;
 
+    /**
+     * Display form in french if user's default system language is french, english if not
+     * Display the user's timezone in the ui
+     * @param url
+     * @param resources
+     */
     @Override
     public void initialize(URL url, ResourceBundle resources) {
 
@@ -82,8 +91,12 @@ public class LoginController implements Initializable {
 
     }
 
+    /**
+     * Take user to the main form of the application if correct username and password are provided, or display an error message if not
+     * @param actionEvent
+     * @throws IOException
+     */
     public void loginButtonPushed(ActionEvent actionEvent) throws IOException {
-        System.out.println("button pressed");
         ObservableList<User> userList = DBUsers.getAllUsers();
         boolean validLogin = false;
         invalidLoginLabel.setText("");
@@ -92,6 +105,8 @@ public class LoginController implements Initializable {
         {
             if (u.isValidLogin(usernameTextField.getText(), passwordTextField.getText()))
             {
+                user = u;
+                writeToFile("Successful");
                 System.out.println("valid login");
                 validLogin = true;
                 //change scenes
@@ -103,9 +118,11 @@ public class LoginController implements Initializable {
                 window.setScene(addProductScene);
                 window.show();
 
+
             }
             if (!validLogin)
             {
+                writeToFile("Unsuccessful");
                 if (userLanguage.equals("fr"))
                 {
                     invalidLoginLabel.setText("Nom d'utilisateur ou mot de passe invalide.");
@@ -118,9 +135,32 @@ public class LoginController implements Initializable {
 
 
         }
+    }
 
+    public static User getUser()
+    {
+        return user;
+    }
 
-
+    /**
+     * Update a text file with attempted login details
+     * @param success
+     */
+    private void writeToFile(String success)
+    {
+        try
+        {
+            Timestamp ts = new Timestamp(System.currentTimeMillis());
+            String str = "\nAttempted Username: " + usernameTextField.getText() + "\nLogin: " + success
+             + "\nTime: " + ts + "\n------------------------------------------";
+            BufferedWriter writer = new BufferedWriter(new FileWriter("login_activity.txt", true));
+            writer.append(str);
+            writer.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 }
 
