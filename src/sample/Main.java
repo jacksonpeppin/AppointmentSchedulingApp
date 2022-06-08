@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utils.DBConnection;
 
+import java.util.Locale;
+
+
 /**
  * @author Jackson Peppin
  *
@@ -22,7 +25,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../View_Controller/Login.fxml"));
-        primaryStage.setTitle("Appointment Scheduling");
+        String userLanguage = Locale.getDefault().getLanguage();
+        if(userLanguage.equals("fr"))
+            primaryStage.setTitle("Application de Planification");
+        else
+            primaryStage.setTitle("Appointment Scheduling");
         primaryStage.setScene(new Scene(root, 600, 300));
         primaryStage.show();
     }
@@ -34,4 +41,5 @@ public class Main extends Application {
         launch(args);
         DBConnection.closeConnection();
     }
+
 }

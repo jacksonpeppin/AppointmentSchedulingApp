@@ -1,10 +1,12 @@
 package DBAccess;
 
+import Model.Appointment;
 import utils.DBConnection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 /**
@@ -140,8 +142,10 @@ public class DBReports {
                 String title = rs.getString("Title");
                 String type = rs.getString("Type");
                 String description = rs.getString("Description");
-                String start = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(rs.getTimestamp("Start"));
-                String end = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(rs.getTimestamp("End"));
+                Timestamp tsStart = rs.getTimestamp("Start");
+                String start = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(Appointment.toSysDefaultTime(tsStart));
+                Timestamp tsEnd = rs.getTimestamp("End");
+                String end = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(Appointment.toSysDefaultTime(tsEnd));
                 Integer customerID = rs.getInt("Customer_ID");
                 String name = rs.getString("Contact_Name");
 

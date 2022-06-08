@@ -5,6 +5,8 @@ Contact Information: jacksonpeppin@gmail.com
 Student Application Version: 1.0
 Date: 5/19/2021
 INTELLIJ IDEA 2021.1 Community Edition
+Java SE 11.0.11
+JavaFX-SDK-11.02
 Directions: To use this application login with valid credentials in the Login window (username: test password: test).
 When you are taken to the main window you have the ability to add/modify/delete appointments and customers and view
 information regarding appointments, customers and contacts by clicking the generate reports button.

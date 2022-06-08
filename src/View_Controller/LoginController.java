@@ -72,11 +72,12 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resources) {
 
-        userLanguage = System.getProperty("user.language");
+        userLanguage = Locale.getDefault().getLanguage();
         userZoneID = ZoneId.systemDefault();
 
         if (userLanguage.equals("fr"))
         {
+
             titleLabel.setText("Application de Planification");
 
             usernameLabel.setText("Nom d'utilisateur:");

@@ -290,8 +290,8 @@ public class MainFormController implements Initializable {
             for (Appointment a : appointmentList) {
                 if (a.getCustomerID() == selectedCustomer.getCustomerID()) {
                     validDelete = false;
-                    JOptionPane.showMessageDialog(null, "Error: Can not delete Customer with scheduled appointment(s).");
                 }
+
             }
             if (validDelete) {
                 int input = JOptionPane.showConfirmDialog(null, "Delete selected customer?");
@@ -304,6 +304,8 @@ public class MainFormController implements Initializable {
 
                 }
             }
+            else
+                JOptionPane.showMessageDialog(null, "Error: Can not delete Customer with scheduled appointment(s).");
         }
     }
 
@@ -355,7 +357,8 @@ public class MainFormController implements Initializable {
             JOptionPane.showMessageDialog(null, "Error: Please select an appointment to delete.");
         }
         else {
-            int input = JOptionPane.showConfirmDialog(null, "Delete selected appointment?");
+            int input = JOptionPane.showConfirmDialog(null, "Delete Appointment ID: " +
+                    selectedAppointment.getAppointmentID() + " Type: " + selectedAppointment.getType() + "?");
             //user selects yes
             if (input == 0) {
                 DBAppointments.deleteAppointment(selectedAppointment);
